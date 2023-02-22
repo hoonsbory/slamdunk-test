@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://slamdunk-test.site/sitemap.xml
