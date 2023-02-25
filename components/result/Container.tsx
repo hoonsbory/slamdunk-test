@@ -2,22 +2,26 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { resultScript } from '../../datas/Scripts';
+import { CharacterType, resultScript } from '../../datas/Scripts';
 import useLoading from '../../hooks/useLoading';
 import { MainBtn } from '../../styles/commonStyle';
 import { relayAnimation } from '../../utils/animationUtils';
-import Loading from '../Loading';
+import Loading from '../LoadingModal';
 import Meta from '../Meta';
 import KakaoShare from './KakaoShare';
+
 const Container = () => {
   const router = useRouter();
-  const loaded = useLoading();
-  const [datas] = useState(resultScript[router.query.result as string]);
+  if (router.query.isShared) router.push('/');
+  const query = router.query.result as string;
+  const [datas] = useState(resultScript[router.query.result as CharacterType]);
+  const loaded = useLoading([`${query}.png`]);
   const WrapperRef = useRef<HTMLElement>(null);
   const metaObj = {
-    query: '/' + router.query.result,
+    img: `${query}.png`,
+    query: query,
     title: `슬램덩크 테스트 - ${datas.name}`,
-    description: `슬램덩크의 ${datas.title}!! ${datas.name}가(이) 나왔어! 너도 한 번 해봐!`,
+    description: `${datas.title}!! ${datas.name}이(가) 나왔어! 너도 한 번 해봐!`,
   };
   useEffect(() => {
     if (!loaded) return;
@@ -30,23 +34,21 @@ const Container = () => {
   }, [loaded]);
   return (
     <>
-      {loaded || <Loading />}
       <Head>
-        <script defer src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
       </Head>
-      <Meta
-        description={metaObj.description}
-        title={metaObj.title}
-        og_title={`나는 슬램덩크의 ${datas.name}!!`}
-        url=""
-      />
+      {loaded || <Loading />}
+      <Meta {...metaObj} og_title={`나는 슬램덩크의 ${datas.name}!!`} />
       <Wrapper ref={WrapperRef}>
         <img
-          src={`${process.env.PATH}/images/${datas.name}.png`}
+          src={`${process.env.PATH}/images/${query}.png`}
           alt={`${datas.name} 이미지`}
         />
         <h4>{datas.title}</h4>
-        <h2>{datas.name}</h2>
+        <h2>
+          {datas.name} - {datas.MBTI}
+        </h2>
         <div>
           {datas.keywords.map(i => (
             <span key={i}>#{i}</span>
@@ -59,6 +61,13 @@ const Container = () => {
         </ul>
         <KakaoShare {...metaObj} />
         <MainBtn onClick={() => router.push('/')}>다시 테스트하러 가기</MainBtn>
+        <footer>
+          <p>
+            광고 및 기타 문의 -{' '}
+            <a href="mailto:tonymkcv93@gmail.com">tonymkcv93@gmail.com</a>
+          </p>
+          <span> Special thanks to Seorim</span>
+        </footer>
       </Wrapper>
     </>
   );
@@ -88,15 +97,20 @@ const Wrapper = styled.article`
   h2 {
     color: #ff5555;
   }
+  h4 {
+    margin-bottom: 0;
+  }
   div:first-of-type {
     margin-bottom: 30px;
+    span {
+      margin-right: 3px;
+      font-weight: bold;
+    }
   }
-  span {
-    margin-right: 3px;
-    font-weight: bold;
-  }
+
   ul {
     width: 88%;
+    padding-left: 0px;
     text-align: left;
   }
   li {
@@ -111,6 +125,14 @@ const Wrapper = styled.article`
     line-height: 18px;
     display: inline-block;
     vertical-align: sub;
+  }
+  footer {
+    font-size: 10px;
+    color: gray;
+    margin-top: 15px;
+    a {
+      text-decoration: underline;
+    }
   }
 `;
 

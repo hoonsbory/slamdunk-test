@@ -9,8 +9,7 @@ export default MainLayout;
 
 const Div = styled.section`
   max-width: 550px;
-  min-height: 100vh;
-  height: 100%;
+  min-height: calc(var(--vh, 1vh) * 100);
   width: 100%;
   bottom: 0px;
   margin: auto;

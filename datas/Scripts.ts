@@ -1,3 +1,37 @@
+export type MbtiType =
+  | 'INTP'
+  | 'INTJ'
+  | 'INFP'
+  | 'INFJ'
+  | 'ISTP'
+  | 'ISTJ'
+  | 'ISFP'
+  | 'ISFJ'
+  | 'ENTP'
+  | 'ENTJ'
+  | 'ENFP'
+  | 'ENFJ'
+  | 'ESTP'
+  | 'ESTJ'
+  | 'ESFP'
+  | 'ESFJ';
+export type CharacterType =
+  | 'baekho'
+  | 'daehyup'
+  | 'taewoong'
+  | 'soyeon'
+  | 'daeman'
+  | 'chisoo'
+  | 'junho'
+  | 'hanna'
+  | 'taeseob'
+  | 'jinwoo'
+  | 'hyunpil'
+  | 'woosung'
+  | 'ahn'
+  | 'hoyeol'
+  | 'daljae'
+  | 'hyunchul';
 export interface scriptType {
   question: string;
   answer: answerType[];
@@ -12,11 +46,12 @@ interface resultScriptType {
   name: string;
   keywords: string[];
   content: string[];
+  MBTI: MbtiType;
 }
 export const Script: scriptType[] = [
   {
     question:
-      '농구 연습을 위해 도착한 농구장... 낯선 사람들이 먼저 농구를 하고 있다. 어떻게 할까..?',
+      '농구 연습을 위해 도착한 농구장... \n낯선 사람들이 먼저 농구를 하고 있다. 어떻게 할까..?',
     answer: [
       { text: '혼자하면 지겨운데 잘됐네! 저기요 같이 해요!', char: 'E' },
       {
@@ -27,7 +62,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '오늘은 안선생님의 슛 지도가 있는 날이다..  안선생님 : 슛을 하기전에는 아무 생각도 하지 않아야 흔들리지 않을 수 있어요',
+      '오늘은 안선생님의 슛 지도가 있는 날이다.. \n 안선생님 : 슛을 하기전에는 아무 생각도 하지 않아야 흔들리지 않을 수 있어요',
     answer: [
       { text: '네! 아무 생각 안하겠습니다!', char: 'S' },
       { text: '아무 생각하지 말라고? 그럼 일단 백지를 상상해보자', char: 'N' },
@@ -52,7 +87,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '능남고와의 연습 경기가 끝나고 집으로 가는 길.. 오늘 처음 본 능남고 윤대협과 집 가는 방향이 겹친다.. 어떻게 할까?',
+      '능남고와의 연습 경기가 끝나고 집으로 가는 길.. \n오늘 처음 본 능남고 윤대협과 집 가는 방향이 겹친다.. 어떻게 할까?',
     answer: [
       { text: '안녕! 너 진짜 잘하더라 너도 여기 살아?', char: 'E' },
       {
@@ -73,7 +108,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '오늘은 북산에 입학한 지 한달 째 되는 날.. 필살 레이업을 성공시켰더니, 소연이의 칭찬이 들려온다. 뭐가 더 기분이 좋을까?',
+      '오늘은 북산에 입학한 지 한달 째 되는 날.. \n필살 레이업을 성공시켰더니, 소연이의 칭찬이 들려온다. 뭐가 더 기분이 좋을까?',
     answer: [
       {
         text: '너 진짜 재능이 있구나! 한달만에 저런 레이업을 구사하다니!',
@@ -84,7 +119,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '오늘도 연습하러 농구장에 왔다.. 누군가 연습을 하고 물병과 공을 여기저기 어질러놓고 갔다... 어떻게 할까?',
+      '오늘도 연습하러 농구장에 왔다.. \n누군가 연습을 하고 물병과 공을 여기저기 어질러놓고 갔다... 어떻게 할까?',
     answer: [
       { text: '하 거슬려.. 정리 해놓고 깔끔한 환경에서 연습하자!', char: 'J' },
       { text: '더럽게도 썼네.. 대충 발로 차서 치우고 연습해야지', char: 'P' },
@@ -119,7 +154,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '오늘은 농구부 1학년 중간평가가 있는 날.. 나의 모든 것을 쏟아부었다.. 그리고 이어진 매니저 한나 선배의 평가.. "잘했네! 드리블 폼만 수정하면 더 좋겠어!" 이 말을 들은 나는?',
+      '치열했던 농구부 1학년 중간평가가 끝났다.. \n그리고 이어진 매니저 한나 선배의 평가..\n "잘했네! 드리블 폼만 수정하면 더 좋겠어!"\n 이 말을 들은 나는?',
     answer: [
       { text: '아싸 칭찬 받았다!! 드리블 하나만 수정하면 되겠군!', char: 'T' },
       {
@@ -130,7 +165,7 @@ export const Script: scriptType[] = [
   },
   {
     question:
-      '드리블 폼을 수정하기 위해 공 튕기기 1만번을 수행하라는 한나 선배의 지시가 있었다... 어떻게 할까?',
+      '드리블 폼을 수정하기 위해 공 튕기기 1만번을 수행하라는 한나 선배의 지시가 있었다.. 어떻게 할까?',
     answer: [
       {
         text: '다음 평가 시간이 10일 남았으니 하루에 천 번씩 연습하자!',
@@ -140,7 +175,7 @@ export const Script: scriptType[] = [
     ],
   },
 ];
-export const CharMBTI: { [key: string]: string } = {
+export const CharMBTI: { [key in MbtiType]: CharacterType } = {
   ESFP: 'baekho',
   ENTP: 'daehyup',
   INTP: 'taewoong',
@@ -158,8 +193,9 @@ export const CharMBTI: { [key: string]: string } = {
   INTJ: 'daljae',
   ENTJ: 'hyunchul',
 };
-export const resultScript: { [key: string]: resultScriptType } = {
+export const resultScript: { [key in CharacterType]: resultScriptType } = {
   baekho: {
+    MBTI: 'ESFP',
     title: '리바운드왕',
     name: '강백호',
     keywords: ['열혈', '도전', '낙천가'],
@@ -173,6 +209,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   daehyup: {
+    MBTI: 'ENTP',
     title: '능남의 천재',
     name: '윤대협',
     keywords: ['느긋', '천재', '멘탈갑'],
@@ -186,6 +223,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   taewoong: {
+    MBTI: 'INTP',
     title: '북산의 에이스',
     name: '서태웅',
     keywords: ['반항적', '중립적', '나만의 규칙'],
@@ -199,6 +237,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   soyeon: {
+    MBTI: 'ESFJ',
     title: '친절한 서포터',
     name: '채소연',
     keywords: ['사교성', '적응력', '협력'],
@@ -212,6 +251,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   daeman: {
+    MBTI: 'ISFP',
     title: '불꽃 남자',
     name: '정대만',
     keywords: ['정직', '열정', '과묵'],
@@ -225,6 +265,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   chisoo: {
+    MBTI: 'ISTJ',
     title: '북산의 고릴라 주장',
     name: '채치수',
     keywords: ['책임감', '의리', '완벽주의'],
@@ -238,6 +279,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   ahn: {
+    MBTI: 'ISFJ',
     title: '호랑이 감독',
     name: '안선생님',
     keywords: ['배려', '헌신', '책임감'],
@@ -251,6 +293,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   hanna: {
+    MBTI: 'ESTJ',
     title: '북산의 매니저',
     name: '이한나',
     keywords: ['솔직', '고집', '책임감'],
@@ -263,6 +306,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   taeseob: {
+    MBTI: 'ENFP',
     title: '도내 넘버원 가드',
     name: '송태섭',
     keywords: ['감수성', '몽상가', '멋쟁이'],
@@ -276,6 +320,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   hyunpil: {
+    MBTI: 'INFP',
     title: '산왕의 거구',
     name: '신현필',
     keywords: ['내성적', '어두움', '감성적'],
@@ -288,6 +333,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   jinwoo: {
+    MBTI: 'ENFJ',
     title: '산왕의 감독',
     name: '도진우',
     keywords: ['활동가', '임기응변', '진보적'],
@@ -300,6 +346,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   woosung: {
+    MBTI: 'ESTP',
     title: '고교 넘버원',
     name: '정우성',
     keywords: ['자존심', '경쟁적', '도전'],
@@ -312,6 +359,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   junho: {
+    MBTI: 'INFJ',
     title: '안경 선배',
     name: '권준호',
     keywords: ['신중함', '감성적', '섬세함'],
@@ -325,6 +373,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   hoyeol: {
+    MBTI: 'ISTP',
     title: '백호군단의 리더',
     name: '양호열',
     keywords: ['호기심', '솔직', '완벽주의'],
@@ -338,6 +387,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   hyunchul: {
+    MBTI: 'ENTJ',
     title: '산왕 떡판고릴라',
     name: '신현철',
     keywords: ['리더', '자기주장', '단호함'],
@@ -350,6 +400,7 @@ export const resultScript: { [key: string]: resultScriptType } = {
     ],
   },
   daljae: {
+    MBTI: 'INTJ',
     title: '벤치 워머',
     name: '이달재',
     keywords: ['논리', '완벽주의', '고집셈'],

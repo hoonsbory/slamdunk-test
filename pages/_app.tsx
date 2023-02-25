@@ -1,9 +1,20 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Meta from '../components/Meta';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any) {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-5TY8059EF2');
+  }, []);
   return (
     <>
       <Head>
@@ -80,13 +91,21 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9106671749645972"
+          crossOrigin="anonymous"
+        ></script>
+        <meta
+          name="naver-site-verification"
+          content="8c31d106334282fccf83278062f3ec1e90281e23"
+        />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-5TY8059EF2"
+        ></script>
       </Head>
-      <Meta
-        description="MBTI 테스트를 통해 내가 어떤 슬램덩크 캐릭터와 맞는 지 확인해보세요"
-        title="슬램덩크 MBTI 테스트"
-        og_title="슬램덩크 MBTI 테스트"
-        url=""
-      />
+
       <Component {...pageProps} />
     </>
   );

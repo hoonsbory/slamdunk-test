@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Container from '../components/result/Container';
 import MainLayout from '../layout/MainLayout';
 const Result = () => {
@@ -27,7 +26,7 @@ export async function getStaticPaths() {
       { params: { result: 'jinwoo' } },
       { params: { result: 'daljae' } },
       { params: { result: 'woosung' } },
-      { params: { result: 'junseob' } },
+      { params: { result: 'junho' } },
       { params: { result: 'hoyeol' } },
       { params: { result: 'hyunchul' } },
       { params: { result: 'hyunpil' } },

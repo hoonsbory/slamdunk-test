@@ -14,7 +14,7 @@ export default Progress;
 
 const Wrapper = styled.header<{ width: number }>`
   position: fixed;
-  top: 20px;
+  top: 3vh;
   left: 50%;
   transform: translateX(-50%);
   width: 33%;

@@ -4,31 +4,29 @@ interface ogType {
   title: string;
   og_title: string;
   description: string;
-  url: string;
+  query: string;
+  img: string;
 }
-const Meta = ({ title, og_title, description, url }: ogType) => {
+const Meta = ({ title, og_title, description, query, img }: ogType) => {
   return (
     <Head>
       <title>{title}</title>
-      <meta property="og:url" content={url} />
-      <meta
-        property="og:image"
-        content={`${process.env.PATH}/images/metaImg.jpg`}
-      />
+      <meta property="og:url" content={`${process.env.URL}/${query}`} />
+      <meta property="og:image" content={`${process.env.PATH}/images/${img}`} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={og_title} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={og_title} />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={og_title} />
       <meta name="twitter:description" content={description} />
       <meta
-        name="twitter:image"
-        content={`${process.env.PATH}/images/mainImg.jpg`}
+        name="twitter:image:src"
+        content={`${process.env.PATH}/images/${img}`}
       />
-      <meta name="twitter:site" content={url} />
+      <meta name="twitter:site" content={`${process.env.URL}/${query}`} />
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={`${process.env.URL}/${query}`} />
     </Head>
   );
 };

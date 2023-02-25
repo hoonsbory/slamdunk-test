@@ -45,44 +45,38 @@ const ToastMsg = styled.p`
   font-size: 0.9em;
 `;
 
-const fadeIn = keyframes`
-  0% {
-    top : 40px;
-    opacity : 0;
-  }
-  50%{
-    opacity : .5;
-  }
-  100% {
-    top: 0px;
-  }
-`;
 const ShareGroup = styled.div`
   position: relative;
   margin-top: 15px;
   width: 100%;
   text-align: center;
-  animation: ${fadeIn} 0.3s linear alternate;
 `;
 interface props {
   query: string;
   title: string;
   description: string;
+  img: string;
 }
 declare global {
   interface Window {
     Kakao: any;
   }
 }
-const KakaoShare = ({ query, title, description }: props): ReactElement => {
+const KakaoShare = ({
+  query,
+  title,
+  description,
+  img,
+}: props): ReactElement => {
   const [mainUrl] = useState(process.env.URL);
   const size = useRef('');
-  const subUrl = `${mainUrl + query}?isShared=true`;
+  const fullUrl = `${mainUrl}/${query}`;
+  const shareUrl = `${fullUrl}?isShared=true`;
   // const app_id = '2473764549612950';
 
   const facebook = () => {
     window.open(
-      'http://www.facebook.com/sharer/sharer.php?u=' + subUrl,
+      'http://www.facebook.com/sharer/sharer.php?u=' + shareUrl,
       'name',
       size.current,
     );
@@ -90,7 +84,7 @@ const KakaoShare = ({ query, title, description }: props): ReactElement => {
   const twitter = () => {
     //이상하게 트위터에서는 리다이렉트용 페이지의 썸네일이 나오지않는다. 그래서 리다이렉트페이지를 포기하고 실제 결과페이지로 바꿈.
     window.open(
-      `http://twitter.com/intent/tweet?text=${subUrl}`,
+      `http://twitter.com/intent/tweet?text=[슬램덩크 MBTI 테스트] %0a ${description} %0a ${fullUrl} %0a %23슬램덩크 %23MBTI %23슬램덩크등장인물테스트 %23심테`,
       'name',
       size.current,
     );
@@ -98,24 +92,31 @@ const KakaoShare = ({ query, title, description }: props): ReactElement => {
   const naver = () => {
     window.open(
       'http://share.naver.com/web/shareView.nhn?url=' +
-        subUrl +
+        shareUrl +
         '&title=슬랭덩크테스트',
       'name',
       size.current,
     );
   };
 
-  const urlCopy = () => {
-    const toast = document.getElementById('toast');
-    toast!.style.opacity = '1';
-    const copyText = document.getElementById('copy') as HTMLTextAreaElement;
-    copyText!.select();
-    document.execCommand('Copy');
-    copyText!.blur();
+  // const urlCopy = () => {
+  //   const toast = document.getElementById('toast');
+  //   toast!.style.opacity = '1';
+  //   const copyText = document.getElementById('copy') as HTMLTextAreaElement;
+  //   copyText!.select();
+  //   document.execCommand('Copy');
+  //   copyText!.blur();
 
-    setTimeout(() => {
-      toast!.style.opacity = '0';
-    }, 1500);
+  //   setTimeout(() => {
+  //     toast!.style.opacity = '0';
+  //   }, 1500);
+  // };
+  const urlCopy = () => {
+    navigator.share({
+      title: title,
+      text: description,
+      url: shareUrl,
+    });
   };
 
   useEffect(() => {
@@ -135,9 +136,9 @@ const KakaoShare = ({ query, title, description }: props): ReactElement => {
       ', top=' +
       popupY;
 
-    if (!window.Kakao.isInitialized())
+    if (!window.Kakao?.isInitialized())
       window.Kakao.init('7f7df6dae7fb5135dcfa963913cd1ea3');
-    //공유할 때 썸네일에 결과만 공유하고 접속은 테스트하는 페이지로 넘기기 위해서(동적으로 썸네일이 안바뀌기 때문에), subUrl에 리다이렉트 함수를 넣어둔 페이지의 url을 넣어준다.
+    //공유할 때 썸네일에 결과만 공유하고 접속은 테스트하는 페이지로 넘기기 위해서(동적으로 썸네일이 안바뀌기 때문에), shareUrl에 리다이렉트 함수를 넣어둔 페이지의 url을 넣어준다.
     // 카카오톡 공유
     window.Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
@@ -145,7 +146,7 @@ const KakaoShare = ({ query, title, description }: props): ReactElement => {
       content: {
         title: title,
         description: description,
-        imageUrl: `${process.env.PATH}/images/${query}.png`,
+        imageUrl: `${process.env.PATH}/images/${img}`,
         imageWidth: 800,
         imageHeight: 400,
         link: {

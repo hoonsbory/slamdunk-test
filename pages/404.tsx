@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 18px;
+  white-space: nowrap;
+  text-align: center;
 `;
 const ErrorPage = () => {
   const router = useRouter();
@@ -15,7 +17,6 @@ const ErrorPage = () => {
 
   useEffect(() => {
     timer.current = setTimeout(() => {
-      console.log(count);
       setCount(count - 1);
     }, 1000);
 
@@ -27,7 +28,8 @@ const ErrorPage = () => {
 
   return (
     <Wrapper>
-      잘못된 접근입니다. <b>{count}초 후 메인페이지</b>로 이동합니다.
+      잘못된 접근입니다.
+      <br /> <b>{count}초 후 메인페이지</b>로 이동합니다.
     </Wrapper>
   );
 };
