@@ -136,34 +136,42 @@ const KakaoShare = ({
       ', top=' +
       popupY;
 
-    if (!window.Kakao.isInitialized())
-      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
-    //공유할 때 썸네일에 결과만 공유하고 접속은 테스트하는 페이지로 넘기기 위해서(동적으로 썸네일이 안바뀌기 때문에), shareUrl에 리다이렉트 함수를 넣어둔 페이지의 url을 넣어준다.
-    // 카카오톡 공유
-    window.Kakao.Link.createDefaultButton({
-      container: '#kakao-link-btn',
-      objectType: 'feed',
-      content: {
-        title: title,
-        description: description,
-        imageUrl: `${process.env.PATH}/images/${img}`,
-        imageWidth: 800,
-        imageHeight: 400,
-        link: {
-          mobileWebUrl: mainUrl,
-          webUrl: mainUrl,
-        },
-      },
-      buttons: [
-        {
-          title: '테스트 하러가기',
+    // console.log(window.Kakao);
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    script.onload = () => {
+      if (!window.Kakao.isInitialized())
+        window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+      //공유할 때 썸네일에 결과만 공유하고 접속은 테스트하는 페이지로 넘기기 위해서(동적으로 썸네일이 안바뀌기 때문에), shareUrl에 리다이렉트 함수를 넣어둔 페이지의 url을 넣어준다.
+      // 카카오톡 공유
+      window.Kakao.Link.createDefaultButton({
+        container: '#kakao-link-btn',
+        objectType: 'feed',
+        content: {
+          title: title,
+          description: description,
+          imageUrl: `${process.env.PATH}/images/${img}`,
+          imageWidth: 800,
+          imageHeight: 400,
           link: {
             mobileWebUrl: mainUrl,
             webUrl: mainUrl,
           },
         },
-      ],
-    });
+        buttons: [
+          {
+            title: '테스트 하러가기',
+            link: {
+              mobileWebUrl: mainUrl,
+              webUrl: mainUrl,
+            },
+          },
+        ],
+      });
+    };
   }, []);
   return (
     <>

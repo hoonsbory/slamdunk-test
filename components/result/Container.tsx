@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Script from 'next/script';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { CharacterType, resultScript } from '../../datas/Scripts';
@@ -34,11 +33,6 @@ const Container = () => {
   }, [loaded]);
   return (
     <>
-      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-      <Script
-        strategy="beforeInteractive"
-        src="//developers.kakao.com/sdk/js/kakao.min.js"
-      />
       {loaded || <Loading />}
       <Meta {...metaObj} og_title={`나는 슬램덩크의 ${datas.name}!!`} />
       <Wrapper ref={WrapperRef}>
