@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { CharacterType, resultScript } from '../../datas/Scripts';
@@ -21,7 +21,7 @@ const Container = () => {
     img: `${query}.png`,
     query: query,
     title: `슬램덩크 테스트 - ${datas.name}`,
-    description: `${datas.title}!! ${datas.name}이(가) 나왔어! 너도 한 번 해봐!`,
+    description: `${datas.title}!! 【${datas.MBTI} ${datas.name}이(가) 나왔어! 너도 한 번 해봐!`,
   };
   useEffect(() => {
     if (!loaded) return;
@@ -34,13 +34,15 @@ const Container = () => {
   }, [loaded]);
   return (
     <>
-      <Head>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-      </Head>
+      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+      <Script
+        strategy="beforeInteractive"
+        src="//developers.kakao.com/sdk/js/kakao.min.js"
+      />
       {loaded || <Loading />}
       <Meta {...metaObj} og_title={`나는 슬램덩크의 ${datas.name}!!`} />
       <Wrapper ref={WrapperRef}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${process.env.PATH}/images/${query}.png`}
           alt={`${datas.name} 이미지`}

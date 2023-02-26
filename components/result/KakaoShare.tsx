@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 import CopyURL from '../snsIcon/CopyUrl';
 import FaceBook from '../snsIcon/FaceBook';
 import Kakao from '../snsIcon/Kakao';
@@ -136,8 +136,8 @@ const KakaoShare = ({
       ', top=' +
       popupY;
 
-    if (!window.Kakao?.isInitialized())
-      window.Kakao.init('7f7df6dae7fb5135dcfa963913cd1ea3');
+    if (!window.Kakao.isInitialized())
+      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
     //공유할 때 썸네일에 결과만 공유하고 접속은 테스트하는 페이지로 넘기기 위해서(동적으로 썸네일이 안바뀌기 때문에), shareUrl에 리다이렉트 함수를 넣어둔 페이지의 url을 넣어준다.
     // 카카오톡 공유
     window.Kakao.Link.createDefaultButton({
@@ -166,29 +166,31 @@ const KakaoShare = ({
     });
   }, []);
   return (
-    <ShareGroup id="shareButton">
-      <LeftButton onClick={facebook} color="rgb(224,230,251)">
-        <FaceBook></FaceBook>
-      </LeftButton>
-      <Button id="kakao-link-btn" color="rgba(239, 219, 72, 0.48)">
-        <Kakao></Kakao>
-      </Button>
-      <Button onClick={naver} color="rgba(87, 192, 79, 0.19)">
-        <NaverBlog></NaverBlog>
-      </Button>
-      <Button onClick={twitter} color="rgb(224,230,251)">
-        <Twitter />
-      </Button>
-      <RightButton onClick={urlCopy} color="rgba(153, 153, 153, 0.19)">
-        <CopyURL></CopyURL>
-      </RightButton>
-      <ToastMsg id="toast">클립보드에 주소가 복사되었습니다.</ToastMsg>
-      <HiddenTextArea
-        readOnly
-        id="copy"
-        value="https://mycolor.kr"
-      ></HiddenTextArea>
-    </ShareGroup>
+    <>
+      <ShareGroup id="shareButton">
+        <LeftButton onClick={facebook} color="rgb(224,230,251)">
+          <FaceBook></FaceBook>
+        </LeftButton>
+        <Button id="kakao-link-btn" color="rgba(239, 219, 72, 0.48)">
+          <Kakao></Kakao>
+        </Button>
+        <Button onClick={naver} color="rgba(87, 192, 79, 0.19)">
+          <NaverBlog></NaverBlog>
+        </Button>
+        <Button onClick={twitter} color="rgb(224,230,251)">
+          <Twitter />
+        </Button>
+        <RightButton onClick={urlCopy} color="rgba(153, 153, 153, 0.19)">
+          <CopyURL></CopyURL>
+        </RightButton>
+        <ToastMsg id="toast">클립보드에 주소가 복사되었습니다.</ToastMsg>
+        <HiddenTextArea
+          readOnly
+          id="copy"
+          value="https://mycolor.kr"
+        ></HiddenTextArea>
+      </ShareGroup>
+    </>
   );
 };
 

@@ -19,6 +19,7 @@ const Wrapper = styled.header`
     color: #ff5555;
     margin-bottom: 5px;
     font-weight: bold;
+    white-space: nowrap;
   }
   font-size: 16px;
 `;

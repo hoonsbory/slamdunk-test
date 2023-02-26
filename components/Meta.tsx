@@ -17,7 +17,7 @@ const Meta = ({ title, og_title, description, query, img }: ogType) => {
       <meta property="og:title" content={og_title} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={og_title} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={og_title} />
       <meta name="twitter:description" content={description} />
       <meta

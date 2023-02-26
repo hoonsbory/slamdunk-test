@@ -197,7 +197,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   baekho: {
     MBTI: 'ESFP',
     title: '리바운드왕',
-    name: '강백호',
+    name: '강백호 (사쿠라기 하나미치)',
     keywords: ['열혈', '도전', '낙천가'],
     content: [
       '주저하지 않고 대담한 성격을 가졌어요',
@@ -211,7 +211,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   daehyup: {
     MBTI: 'ENTP',
     title: '능남의 천재',
-    name: '윤대협',
+    name: '윤대협 (센도 아키라)',
     keywords: ['느긋', '천재', '멘탈갑'],
     content: [
       '말빨이 뛰어나며, 논쟁하기를 즐겨요',
@@ -225,7 +225,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   taewoong: {
     MBTI: 'INTP',
     title: '북산의 에이스',
-    name: '서태웅',
+    name: '서태웅 (루카와 카에데)',
     keywords: ['반항적', '중립적', '나만의 규칙'],
     content: [
       '인간들과 친밀한 관계를 맺는 것보다는 지적 호기심을 충적하는 것을 선호해요',
@@ -239,7 +239,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   soyeon: {
     MBTI: 'ESFJ',
     title: '친절한 서포터',
-    name: '채소연',
+    name: '채소연 (아카기 하루코)',
     keywords: ['사교성', '적응력', '협력'],
     content: [
       '뛰어난 사회성으로 어딜가든 사랑받아요',
@@ -253,7 +253,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   daeman: {
     MBTI: 'ISFP',
     title: '불꽃 남자',
-    name: '정대만',
+    name: '정대만 (미츠이 히사시)',
     keywords: ['정직', '열정', '과묵'],
     content: [
       '자유로움 추구성향이 강하며 자신을 리드하는 것을 좋아하지 않아요',
@@ -267,7 +267,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   chisoo: {
     MBTI: 'ISTJ',
     title: '북산의 고릴라 주장',
-    name: '채치수',
+    name: '채치수 (아카기 타케노리)',
     keywords: ['책임감', '의리', '완벽주의'],
     content: [
       '의젓한 성격으로 장남, 장녀 같다는 말을 많이 들어요',
@@ -281,7 +281,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   ahn: {
     MBTI: 'ISFJ',
     title: '호랑이 감독',
-    name: '안선생님',
+    name: '안선생님 (안자이 미츠요시)',
     keywords: ['배려', '헌신', '책임감'],
     content: [
       '안정과 평온을 중시하여 모험이나 변화를 즐기지 않아요',
@@ -295,7 +295,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   hanna: {
     MBTI: 'ESTJ',
     title: '북산의 매니저',
-    name: '이한나',
+    name: '이한나 (아야코)',
     keywords: ['솔직', '고집', '책임감'],
     content: [
       '외향적이며 감정이 잘드러나서 직설적인 언어로 표현해요',
@@ -308,7 +308,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   taeseob: {
     MBTI: 'ENFP',
     title: '도내 넘버원 가드',
-    name: '송태섭',
+    name: '송태섭 (미야기 료타)',
     keywords: ['감수성', '몽상가', '멋쟁이'],
     content: [
       '사람을 기쁘게 해주는 타고난 능력이 있어요',
@@ -322,7 +322,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   hyunpil: {
     MBTI: 'INFP',
     title: '산왕의 거구',
-    name: '신현필',
+    name: '신현필 (카와다 미키오)',
     keywords: ['내성적', '어두움', '감성적'],
     content: [
       '성격이 세심하고 이해력과 포용성이 뛰어나 갈등을 잘넘겨요',
@@ -335,7 +335,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   jinwoo: {
     MBTI: 'ENFJ',
     title: '산왕의 감독',
-    name: '도진우',
+    name: '도진우 (도모토 고로)',
     keywords: ['활동가', '임기응변', '진보적'],
     content: [
       '더 나은 세상을 만들기 위해 앞장서기를 좋아해요',
@@ -348,7 +348,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   woosung: {
     MBTI: 'ESTP',
     title: '고교 넘버원',
-    name: '정우성',
+    name: '정우성 (사와키타 에이지)',
     keywords: ['자존심', '경쟁적', '도전'],
     content: [
       '타고난 해결사로써 문제를 해결하는 능력이 타의 추종을 불허해요',
@@ -361,7 +361,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   junho: {
     MBTI: 'INFJ',
     title: '안경 선배',
-    name: '권준호',
+    name: '권준호 (코구레 키미노부)',
     keywords: ['신중함', '감성적', '섬세함'],
     content: [
       '영감이 뛰어나고 깊은 통찰력이 있어서 내면을 꿰뚫어보는 재능이 있어요',
@@ -375,7 +375,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   hoyeol: {
     MBTI: 'ISTP',
     title: '백호군단의 리더',
-    name: '양호열',
+    name: '양호열 (미토 요헤이)',
     keywords: ['호기심', '솔직', '완벽주의'],
     content: [
       '일반적으로 조용하지만 필요에 따라 사교적이에요',
@@ -389,7 +389,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   hyunchul: {
     MBTI: 'ENTJ',
     title: '산왕 떡판고릴라',
-    name: '신현철',
+    name: '신현철 (카와타 마사시)',
     keywords: ['리더', '자기주장', '단호함'],
     content: [
       '권위적이지 않고 아랫사람들과도 의논을 잘하며, 오히려 부조리하고 비합리적인 것을 혐오해요',
@@ -402,7 +402,7 @@ export const resultScript: { [key in CharacterType]: resultScriptType } = {
   daljae: {
     MBTI: 'INTJ',
     title: '벤치 워머',
-    name: '이달재',
+    name: '이달재 (야스다 야스하루)',
     keywords: ['논리', '완벽주의', '고집셈'],
     content: [
       '정보 전달에 대한 책임성과 눈높이가 지나치게 높은 경향이 있어요',
