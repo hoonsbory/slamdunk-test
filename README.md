@@ -34,13 +34,13 @@
 
 ### Main page
 
-![](./slamdunk_main.gif)
+![](./readme_images/slamdunk_main.gif)
 
 <br>
 
 ### Question & Result page
 
-![](./slamdunk_result.gif)
+![](./readme_images/slamdunk_result.gif)
 
 <br>
 
