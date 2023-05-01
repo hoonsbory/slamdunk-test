@@ -54,6 +54,7 @@
 - ReactJS `18.2.0`
 - Styled-components `5.3.6`
 - Typescript `4.9.4`
+- deploy `github pages`
 
 
 <br>
